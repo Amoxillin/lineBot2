@@ -7,18 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    a=os.environ['Authorization']
-    try:
-        f = open("student.csv", "r")
-        for line in f.readlines():
-            print(line)
-            a = line.split(",")
-            if(a[0]=="00001"):
-                return a[4]
-        f.close()
-    except Exception:
         return "Could not read to file"
-    
     return "Sawaddee"
 
 @app.route("/webhook", methods=['POST'])
@@ -48,8 +37,8 @@ def callback():
 #           sendText(user,nameList)
         except Exception:
             sendText(user,"ขออภัย..ไม่สามารถเปิดไฟล์ได้")
-    elif(userText=="ไอ้บ้า"):
-        sendText(user,"ไม่บ้านะ")
+    elif(userText=="ครับ"):
+        sendText(user,"ไม่ครับ")
 
     return '',200
 
